@@ -34,7 +34,11 @@ public class CommentService {
     }
 
 
-    public void deleteComment(Long commentid){
+    public Comment deleteComment(Long commentid) {
+        Comment comment = commentRepository.findById(commentid).orElseThrow(
+                ()-> new IllegalArgumentException("")
+        );
         commentRepository.deleteById(commentid);
+        return comment;
     }
 }

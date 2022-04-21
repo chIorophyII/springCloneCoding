@@ -30,8 +30,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/api/comment/{commentid}")
-    public String deleteComment(@PathVariable Long commentid){
-        commentservice.deleteComment(commentid);
-        return "지우기 성공!!";
+    public Comment deleteComment(@PathVariable Long commentid){
+        return commentservice.deleteComment(commentid);
     }
 }
