@@ -15,9 +15,6 @@ public class Follow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private Long myid;
-
     // 다른 사람이 나를 팔로우(팔로워)
     @JoinColumn(name = "from_user_id")
     @ManyToOne

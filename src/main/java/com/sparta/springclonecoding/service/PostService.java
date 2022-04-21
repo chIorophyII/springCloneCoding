@@ -162,10 +162,10 @@ public class PostService {
     // 프로필 수정
     @Transactional
     public void editprofile(MultipartFile multipartFile,UserDetailsImpl userDetails) throws IOException{
-        String imageUrl = s3Service.upload(multipartFile,"static");
-        User user = userRepository.findById(userDetails.getId()).orElseThrow(
+        User user = userRepository.findById(userDetails.getUser().getId()).orElseThrow(
                 ()-> new IllegalArgumentException("없는 유저입니다.")
         );
+        String imageUrl = s3Service.upload(multipartFile);
         user.update(imageUrl);
     }
 }

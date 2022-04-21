@@ -38,11 +38,11 @@ public class UserService {
             return new ResultDto(false, message);
         }
 
-        // password 일치 여부
-        if(!requestDto.getPassword().equals(requestDto.getPasswordCheck())) {
-            message = ILLEGAL_PASS_WORD_DUPLICATION;
-            return new ResultDto(false, message);
-        }
+//        // password 일치 여부
+//        if(!requestDto.getPassword().equals(requestDto.getPasswordCheck())) {
+//            message = ILLEGAL_PASS_WORD_DUPLICATION;
+//            return new ResultDto(false, message);
+//        }
 
         // 패스워드 암호화
         String password = passwordEncoder.encode(requestDto.getPassword());

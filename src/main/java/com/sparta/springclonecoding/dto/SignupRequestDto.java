@@ -22,6 +22,4 @@ public class SignupRequestDto {
 
     @Pattern(regexp = "^(?=.*[a-zA-Z])((?=.*\\d)(?=.*\\W)).{8,16}$", message = "영문/숫자/특수문자(!@#$%^&*)를 포함하여 8~16자로 입력해야합니다")
     private String password;
-
-    private String passwordCheck;
 }

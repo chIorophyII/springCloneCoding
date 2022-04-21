@@ -73,7 +73,7 @@ public class PostController {
 
     // 프로필 수정
     @PutMapping("/api/profile")
-    public void updatePost (@RequestParam("multipartFile") MultipartFile multipartFile,@AuthenticationPrincipal UserDetailsImpl userDetails) throws IOException {
+    public void updatePost (@RequestParam("multipartFile") MultipartFile multipartFile, @AuthenticationPrincipal UserDetailsImpl userDetails) throws IOException {
         postService.editprofile(multipartFile,userDetails);
     }
 }
