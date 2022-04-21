@@ -43,7 +43,9 @@ public class PostService {
         // 해당 프로필이 팔로우한 유저(팔로잉) 수
         Long userFollowingCnt = followRepository.countAllByFromUser(user);
 
-        return new ProfileDto(user, postList, postCnt, isLoginUser, followState, userFollowerCnt, userFollowingCnt);
+        ProfileDto profileDto = new ProfileDto(user, postList, postCnt, isLoginUser, followState, userFollowerCnt, userFollowingCnt);
+        System.out.println(profileDto);
+        return profileDto;
     }
 
     // 상세 페이지 + 댓글 페이징 처리
@@ -129,7 +131,7 @@ public class PostService {
         String timeBefore = convertTime.convertLocaldatetimeToTime(post.getCreatedAt());
 
         PostResponseDto postResponseDto = new PostResponseDto(post, favorites,
-                commentList, commentCnt,favoriteCnt,myLike,new UserResponseDto(user),timeBefore);
+                commentList, commentCnt, favoriteCnt, myLike, new UserResponseDto(user), timeBefore);
         return postResponseDto;
     }
 
