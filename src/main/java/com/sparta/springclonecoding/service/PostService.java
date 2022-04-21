@@ -42,8 +42,12 @@ public class PostService {
         Long userFollowerCnt = followRepository.countAllByToUser(user);
         // 해당 프로필이 팔로우한 유저(팔로잉) 수
         Long userFollowingCnt = followRepository.countAllByFromUser(user);
+        List<PostResponseDto> postResponseDtos = new ArrayList<>();
+        for(Post post : postList){
+           postResponseDtos.add(getPostResponseDto(userDetails.getUser().getId(),post));
+        }
 
-        return new ProfileDto(user, postList, postCnt, isLoginUser, followState, userFollowerCnt, userFollowingCnt);
+        return new ProfileDto(user, postResponseDtos, postCnt, isLoginUser, followState, userFollowerCnt, userFollowingCnt);
     }
 
     // 상세 페이지 + 댓글 페이징 처리
@@ -63,6 +67,7 @@ public class PostService {
 
         return new DetailDto(post,favorites.size(),myLike);
     }
+
 
     // 게시글 저장
     public PostResponseDto postPost (MultipartFile multipartFile, String content, UserDetailsImpl userDetails) throws IOException {
